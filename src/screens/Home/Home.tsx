@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <View>
+    <View focusable={false}>
       {!hide ? (
         <S.NavBar>
           <S.Button onPress={goback}>
@@ -30,16 +30,19 @@ const Home: React.FC = () => {
           </S.Button>
         </S.NavBar>
       ) : (
-        <S.CloudButton onPress={() => setHide(!hide)}/>
+        <S.CloudButton  onPress={() => setHide(!hide)}>
+          <S.Point focusable={false}/>
+          <S.Point focusable={false}/>
+          <S.Point focusable={false}/>
+        </S.CloudButton>
       )}
 
-      <S.Container>
+      <S.Container focusable={false}>
         <RNWebView
           ref={webViewRef}
           source={{uri: 'https://www.xbox.com/pt-br/play'}}
           onLoad={() => console.log('loaded')}
           javaScriptEnabled
-          originWhitelist={['*']}
         />
       </S.Container>
     </View>

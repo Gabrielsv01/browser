@@ -23,13 +23,24 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const CloudButton = styled.TouchableOpacity`
-  width: 20px;
-  height: 20px;
-  background-color: 'rgba(55, 55, 55, 0.8)';
+  width: 18px;
+  height: 45px;
+  background-color: #00000075;
   align-items: center;
   position: absolute;
   top: 5px;
   right: 0px;
   z-index: 99;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+`;
+
+export const Point = styled.View`
+  width: 3px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: white;
 `;
