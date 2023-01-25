@@ -1,10 +1,11 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {Text, View} from 'react-native';
 import {WebView as RNWebView} from 'react-native-webview';
 
 import * as S from './styles';
 const Home: React.FC = () => {
   const webViewRef = useRef<RNWebView>(null);
+  const [hide, setHide] = useState(false);
 
   const goback = () => {
     webViewRef.current?.goBack();
@@ -16,14 +17,22 @@ const Home: React.FC = () => {
 
   return (
     <View>
-      <S.NavBar>
-        <S.Button onPress={goback}>
-          <S.Title>Back</S.Title>
-        </S.Button>
-        <S.Button onPress={reload}>
-          <S.Title>Reload</S.Title>
-        </S.Button>
-      </S.NavBar>
+      {!hide ? (
+        <S.NavBar>
+          <S.Button onPress={goback}>
+            <S.Title>Back</S.Title>
+          </S.Button>
+          <S.Button onPress={() => setHide(!hide)}>
+            <S.Title>Hide</S.Title>
+          </S.Button>
+          <S.Button onPress={reload}>
+            <S.Title>Reload</S.Title>
+          </S.Button>
+        </S.NavBar>
+      ) : (
+        <S.CloudButton onPress={() => setHide(!hide)}/>
+      )}
+
       <S.Container>
         <RNWebView
           ref={webViewRef}
